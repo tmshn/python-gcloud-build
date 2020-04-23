@@ -2,10 +2,16 @@
 
 readonly target="${1:-.}"
 
+if ! type black > /dev/null; then
+    echo 'Black need to be installed on the system.'
+    echo 'Run `poetry run pip install black` to install it.'
+    exit 1
+fi
+
 autoflake -ir \
     --remove-all-unused-imports \
     --remove-unused-variables \
     --remove-duplicate-keys \
-    "${target}"
-isort -rc "${target}"
-black "${target}"
+    "${target}" \
+&& isort -rc "${target}" \
+&& black "${target}"
