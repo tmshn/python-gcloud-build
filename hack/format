@@ -1,0 +1,11 @@
+#!/bin/sh
+
+readonly target="${1:-.}"
+
+autoflake -ir \
+    --remove-all-unused-imports \
+    --remove-unused-variables \
+    --remove-duplicate-keys \
+    "${target}"
+isort -rc "${target}"
+black "${target}"
