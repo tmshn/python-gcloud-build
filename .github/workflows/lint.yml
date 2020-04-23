@@ -22,5 +22,6 @@ jobs:
         poetry install
     - name: Lint
       run: |
-        hack/format
+        poetry run mypy
+        poetry run hack/format
         git diff --exit-code

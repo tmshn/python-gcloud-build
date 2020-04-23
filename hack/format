@@ -12,6 +12,6 @@ autoflake -ir \
     --remove-all-unused-imports \
     --remove-unused-variables \
     --remove-duplicate-keys \
-    "${target}"
-isort -rc "${target}"
-black "${target}"
+    "${target}" \
+&& isort -rc "${target}" \
+&& black "${target}"
